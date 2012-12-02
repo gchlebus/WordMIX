@@ -69,32 +69,6 @@ WordMIXDialog::~WordMIXDialog()
 }
 
 //-------------------------------------------------------------------------------
-bool WordMIXDialog::eventFilter(QObject *obj, QEvent *e)
-{
-  if (e->type() == QEvent::KeyPress) {
-    QKeyEvent *keyEvent = static_cast<QKeyEvent *>(e);
-    int key = keyEvent->key();
-    int modif = keyEvent->modifiers();
-    
-    // if pressed letters or backspace set focus to search line edit
-    if ( (key >= Qt::Key_A && key <= Qt::Key_Z && modif == Qt::NoModifier) ||
-      key == Qt::Key_Backspace) {
-      QApplication::sendEvent(searchLineEdit, e);
-      searchLineEdit->setFocus();
-    }
-
-    // if key down or key up then set focus to results tree
-    if (key == Qt::Key_Up || key == Qt::Key_Down) {
-      resultsTreeWidget->setFocus();
-      //QApplication::sendEvent(resultsTreeWidget, e);
-    }
-
-    return true;
-  }
-  return false;
-}
-
-//-------------------------------------------------------------------------------
 void WordMIXDialog::on_resultsTreeWidget_itemSelectionChanged()
 {
   if (resultsTreeWidget->selectedItems().empty()) {

@@ -19,8 +19,6 @@ public:
   WordMIXDialog(QWidget *parent = 0, Qt::WFlags flags = 0);
   ~WordMIXDialog();
 
-  //bool eventFilter(QObject *object, QEvent *event);
-
 private slots:
   void on_resultsTreeWidget_itemSelectionChanged();
   void addWord();
