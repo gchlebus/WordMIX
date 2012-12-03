@@ -28,7 +28,6 @@ private slots:
   void updateTreeWidget();
 
 private:
-  bool eventFilter(QObject *obj, QEvent *e);
   void connectToDatabase();
   int getOccurencesCount(const QString &s);
   

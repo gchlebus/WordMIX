@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/WordMIX">
         <file>WordMIX.ico</file>
+        <file>WordMIXSplash.png</file>
     </qresource>
 </RCC>

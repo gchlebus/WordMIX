@@ -1,14 +1,22 @@
 #include "wordmix.h"
 #include <QtGui/QApplication>
 #include <QTextCodec>
+#include <QSplashScreen>
 
 int main(int argc, char *argv[])
 {
     QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
- 
+
     QApplication a(argc, argv);
-    WordMIXDialog w;
-    w.setWindowIcon(QIcon(":/WordMIX/WordMIX.ico"));
-    w.show();
+    // Splash screen
+    QPixmap pixmap(":/WordMIX/WordMIXSplash.png");
+    QSplashScreen splash(pixmap);
+    splash.show();
+
+    WordMIXDialog wordMIX;
+    wordMIX.setWindowIcon(QIcon(":/WordMIX/WordMIX.ico"));
+    wordMIX.show();
+    splash.finish(&wordMIX);
+
     return a.exec();
 }

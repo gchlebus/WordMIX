@@ -13,6 +13,7 @@
 #include <QTextStream>
 #include <QFile>
 #include <QTextCodec>
+#include <QTime>
 // WinAPI include
 #include <Windows.h>
 
@@ -60,6 +61,10 @@ WordMIXDialog::WordMIXDialog(QWidget *parent, Qt::WFlags flags)
 
   updateTreeWidget();
 
+  QTime dieTime = QTime::currentTime().addSecs(1);
+  while(QTime::currentTime() < dieTime) {
+    QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+  }
 }
 
 //-------------------------------------------------------------------------------
