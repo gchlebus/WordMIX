@@ -161,7 +161,7 @@ void WordMIXDialog::updateTreeWidget()
   // Clear tree widget and repopulate
   resultsTreeWidget->clear();
   QList<QTreeWidgetItem *> items;
-  QSqlQuery query("SELECT id, word FROM wordbook WHERE word LIKE '%" + searchLineEdit->text() + "%' ORDER BY word");
+  QSqlQuery query("SELECT id, word FROM wordbook WHERE word LIKE '" + searchLineEdit->text() + "%' ORDER BY word");
   while (query.next()) {
     QStringList entry;
     entry << query.value(0).toString() << query.value(1).toString();
@@ -175,7 +175,6 @@ void WordMIXDialog::updateTreeWidget()
   if (!itemList.isEmpty()) selectedItem = itemList.at(0);
   else if (!items.isEmpty()) selectedItem = items.at(0);
   if (selectedItem) resultsTreeWidget->setCurrentItem(selectedItem);
-
 }
 
 //-------------------------------------------------------------------------------
