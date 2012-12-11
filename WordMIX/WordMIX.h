@@ -29,6 +29,8 @@ private slots:
   void updateTreeWidget();
 
 private:
+  void createActions();
+  void createMenus();
   void connectToDatabase();
   int getOccurencesCount(const QString &s);
   
@@ -37,6 +39,7 @@ private:
   QAction *editAction;
   QAction *deleteAction;
   QAction *learnAction;
+  QAction *exitAction;
   QLabel *statusLabel;
   QTreeWidgetItem *selectedItem;
 };

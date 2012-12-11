@@ -30,35 +30,10 @@ WordMIXDialog::WordMIXDialog(QWidget *parent, Qt::WFlags flags)
   resultsTreeWidget->setHeaderLabels(headers);
   resultsTreeWidget->setColumnHidden(0, true);
   resultsTreeWidget->header()->hide();
-  
-  // Create actions
-  addAction = new QAction("Dodaj", this);
-  addAction->setShortcut(tr("Ctrl+D"));
-  connect(addAction, SIGNAL(triggered()), this, SLOT(addWord()));
-  
-  editAction = new QAction("Edytuj", this);
-  editAction->setShortcut(tr("Ctrl+E"));
-  connect(editAction, SIGNAL(triggered()), this, SLOT(editWord()));
-  
-  deleteAction = new QAction("Usuń", this);
-  connect(deleteAction, SIGNAL(triggered()), this, SLOT(deleteWord()));
-  
-  learnAction = new QAction("Ucz", this);
-  learnAction->setShortcut(tr("Ctrl+L"));
-  connect(learnAction, SIGNAL(triggered()), this, SLOT(learnWords()));
-  
-  keyboardLayoutAction = new QAction("ChangeLayout", this);
-  keyboardLayoutAction->setShortcut(tr("Ctrl+W"));
-  connect(keyboardLayoutAction, SIGNAL(triggered()), this, SLOT(changeLayout()));
-  connect(searchLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(updateTreeWidget()));
-
-  QWidget::addAction(keyboardLayoutAction);
-  resultsTreeWidget->addAction(addAction);
-  resultsTreeWidget->addAction(editAction);
-  resultsTreeWidget->addAction(deleteAction);
-  resultsTreeWidget->addAction(learnAction);
   resultsTreeWidget->setContextMenuPolicy(Qt::ActionsContextMenu);
   
+  createActions();
+  createMenus();
   connectToDatabase();
 
   definitionTextBrowser->installEventFilter(
@@ -191,6 +166,52 @@ void WordMIXDialog::updateTreeWidget()
   if (!itemList.isEmpty()) selectedItem = itemList.at(0);
   else if (!items.isEmpty()) selectedItem = items.at(0);
   if (selectedItem) resultsTreeWidget->setCurrentItem(selectedItem);
+}
+
+//-------------------------------------------------------------------------------
+void WordMIXDialog::createActions()
+{
+  // Create actions
+  addAction = new QAction(tr("&Dodaj"), this);
+  addAction->setShortcut(tr("Ctrl+D"));
+  connect(addAction, SIGNAL(triggered()), this, SLOT(addWord()));
+
+  editAction = new QAction(tr("&Edytuj"), this);
+  editAction->setShortcut(tr("Ctrl+E"));
+  connect(editAction, SIGNAL(triggered()), this, SLOT(editWord()));
+
+  deleteAction = new QAction(tr("&Usuń"), this);
+  connect(deleteAction, SIGNAL(triggered()), this, SLOT(deleteWord()));
+
+  learnAction = new QAction(tr("&Ucz"), this);
+  learnAction->setShortcut(tr("Ctrl+L"));
+  connect(learnAction, SIGNAL(triggered()), this, SLOT(learnWords()));
+
+  keyboardLayoutAction = new QAction(tr("Układ &klawiatury"), this);
+  keyboardLayoutAction->setShortcut(tr("Ctrl+W"));
+  connect(keyboardLayoutAction, SIGNAL(triggered()), this, SLOT(changeLayout()));
+  connect(searchLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(updateTreeWidget()));
+
+  exitAction = new QAction(tr("&Zakończ"), this);
+  exitAction->setShortcut(tr("Ctrl+Q"));
+  connect(exitAction, SIGNAL(triggered()), this, SLOT(close()));
+}
+
+//-------------------------------------------------------------------------------
+void WordMIXDialog::createMenus()
+{
+  menuFile->addAction(learnAction);
+  menuFile->addAction(keyboardLayoutAction);
+  menuFile->addSeparator();
+  menuFile->addAction(exitAction);
+
+  menuEdit->addAction(addAction);
+  menuEdit->addAction(editAction);
+  menuEdit->addAction(deleteAction);
+
+  resultsTreeWidget->addAction(addAction);
+  resultsTreeWidget->addAction(editAction);
+  resultsTreeWidget->addAction(deleteAction);
 }
 
 //-------------------------------------------------------------------------------
