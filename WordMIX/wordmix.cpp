@@ -199,7 +199,7 @@ void WordMIXDialog::connectToDatabase()
 //-------------------------------------------------------------------------------
 int WordMIXDialog::getOccurencesCount(const QString &s)
 {
-  QSqlQuery query("SELECT COUNT(*) AS ilosc FROM wordbook WHERE word LIKE '%" + s + "%'");
+  QSqlQuery query("SELECT COUNT(*) AS ilosc FROM wordbook WHERE word LIKE '" + s + "%'");
   query.next();
   return query.value(0).toInt();
 }
