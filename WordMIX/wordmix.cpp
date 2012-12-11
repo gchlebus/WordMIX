@@ -1,6 +1,7 @@
 // Local includes
 #include "wordmix.h"
 #include "AddWordDialog.h"
+#include "LearnWordDialog.h"
 #include "EventFilters.h"
 // Qt includes
 #include <QSqlDatabase>
@@ -34,11 +35,18 @@ WordMIXDialog::WordMIXDialog(QWidget *parent, Qt::WFlags flags)
   addAction = new QAction("Dodaj", this);
   addAction->setShortcut(tr("Ctrl+D"));
   connect(addAction, SIGNAL(triggered()), this, SLOT(addWord()));
+  
   editAction = new QAction("Edytuj", this);
   editAction->setShortcut(tr("Ctrl+E"));
   connect(editAction, SIGNAL(triggered()), this, SLOT(editWord()));
+  
   deleteAction = new QAction("Usuń", this);
   connect(deleteAction, SIGNAL(triggered()), this, SLOT(deleteWord()));
+  
+  learnAction = new QAction("Ucz", this);
+  learnAction->setShortcut(tr("Ctrl+L"));
+  connect(learnAction, SIGNAL(triggered()), this, SLOT(learnWords()));
+  
   keyboardLayoutAction = new QAction("ChangeLayout", this);
   keyboardLayoutAction->setShortcut(tr("Ctrl+W"));
   connect(keyboardLayoutAction, SIGNAL(triggered()), this, SLOT(changeLayout()));
@@ -48,6 +56,7 @@ WordMIXDialog::WordMIXDialog(QWidget *parent, Qt::WFlags flags)
   resultsTreeWidget->addAction(addAction);
   resultsTreeWidget->addAction(editAction);
   resultsTreeWidget->addAction(deleteAction);
+  resultsTreeWidget->addAction(learnAction);
   resultsTreeWidget->setContextMenuPolicy(Qt::ActionsContextMenu);
   
   connectToDatabase();
@@ -139,6 +148,13 @@ void WordMIXDialog::deleteWord()
   QSqlQuery query("DELETE FROM wordbook WHERE id = " + id);
 
   updateTreeWidget();
+}
+
+//-------------------------------------------------------------------------------
+void WordMIXDialog::learnWords()
+{
+  LearnWordDialog dialog(20, this);
+  dialog.exec();
 }
 
 //-------------------------------------------------------------------------------

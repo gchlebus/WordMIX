@@ -24,6 +24,7 @@ private slots:
   void addWord();
   void editWord();
   void deleteWord();
+  void learnWords();
   void changeLayout();
   void updateTreeWidget();
 
@@ -35,6 +36,7 @@ private:
   QAction *addAction;
   QAction *editAction;
   QAction *deleteAction;
+  QAction *learnAction;
   QLabel *statusLabel;
   QTreeWidgetItem *selectedItem;
 };
