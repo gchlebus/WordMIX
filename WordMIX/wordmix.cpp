@@ -19,44 +19,32 @@
 #include <Windows.h>
 
 //-------------------------------------------------------------------------------
+//! Constructor.
+//------------------------------------------------------------------------------- 
 WordMIXDialog::WordMIXDialog(QWidget *parent, Qt::WFlags flags)
     : QMainWindow(parent, flags)
     , selectedItem(NULL)
 {
   setupUi(this);
-
-  QStringList headers;
-  headers << "ID" << "Word";
-  resultsTreeWidget->setHeaderLabels(headers);
-  resultsTreeWidget->setColumnHidden(0, true);
-  resultsTreeWidget->header()->hide();
-  resultsTreeWidget->setContextMenuPolicy(Qt::ActionsContextMenu);
-  
+  setupResultsTree();
   createActions();
   createMenus();
   connectToDatabase();
-
-  definitionTextBrowser->installEventFilter(
-    new DefBrowserEventFilter(searchLineEdit, resultsTreeWidget, this));
-  resultsTreeWidget->installEventFilter(
-    new ResultsWidgetEventFilter(searchLineEdit, this));
-  searchLineEdit->installEventFilter(
-    new SearchLineEventFilter(resultsTreeWidget, this));
-
+  installEventFilters();
   updateTreeWidget();
-
-  QTime dieTime = QTime::currentTime().addSecs(1);
-  while(QTime::currentTime() < dieTime) {
-    QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
-  }
+  delay(1);
 }
 
+//-------------------------------------------------------------------------------
+//! Destructor.
 //-------------------------------------------------------------------------------
 WordMIXDialog::~WordMIXDialog()
 {
   
 }
 
+//-------------------------------------------------------------------------------
+//! Tree widget selection changed slot.
 //-------------------------------------------------------------------------------
 void WordMIXDialog::on_resultsTreeWidget_itemSelectionChanged()
 {
@@ -72,6 +60,8 @@ void WordMIXDialog::on_resultsTreeWidget_itemSelectionChanged()
   definitionTextBrowser->setHtml(query.value(0).toString());
 }
 
+//-------------------------------------------------------------------------------
+//! Add word action slot.
 //-------------------------------------------------------------------------------
 void WordMIXDialog::addWord()
 {
@@ -91,6 +81,8 @@ void WordMIXDialog::addWord()
   updateTreeWidget();
 }
 
+//-------------------------------------------------------------------------------
+//! Edit word action slot.
 //-------------------------------------------------------------------------------
 void WordMIXDialog::editWord()
 {
@@ -114,6 +106,8 @@ void WordMIXDialog::editWord()
 }
 
 //-------------------------------------------------------------------------------
+//! Delete word action slot.
+//-------------------------------------------------------------------------------
 void WordMIXDialog::deleteWord()
 {
   if (resultsTreeWidget->selectedItems().empty()) return;
@@ -126,6 +120,8 @@ void WordMIXDialog::deleteWord()
 }
 
 //-------------------------------------------------------------------------------
+//! Learn words action slot.
+//-------------------------------------------------------------------------------
 void WordMIXDialog::learnWords()
 {
   LearnWordDialog dialog(20, this);
@@ -133,11 +129,15 @@ void WordMIXDialog::learnWords()
 }
 
 //-------------------------------------------------------------------------------
+//! Change keyboard layout action slot.
+//-------------------------------------------------------------------------------
 void WordMIXDialog::changeLayout()
 {
   ActivateKeyboardLayout((HKL)HKL_NEXT, KLF_SETFORPROCESS);
 }
 
+//-------------------------------------------------------------------------------
+//! Updates results tree.
 //-------------------------------------------------------------------------------
 void WordMIXDialog::updateTreeWidget()
 {
@@ -169,6 +169,21 @@ void WordMIXDialog::updateTreeWidget()
 }
 
 //-------------------------------------------------------------------------------
+//! Sets up result tree.
+//-------------------------------------------------------------------------------
+void WordMIXDialog::setupResultsTree()
+{
+  QStringList headers;
+  headers << "ID" << "Word";
+  resultsTreeWidget->setHeaderLabels(headers);
+  resultsTreeWidget->setColumnHidden(0, true);
+  resultsTreeWidget->header()->hide();
+  resultsTreeWidget->setContextMenuPolicy(Qt::ActionsContextMenu);
+}
+
+//-------------------------------------------------------------------------------
+//! Creates actions.
+//-------------------------------------------------------------------------------
 void WordMIXDialog::createActions()
 {
   // Create actions
@@ -190,6 +205,7 @@ void WordMIXDialog::createActions()
   keyboardLayoutAction = new QAction(tr("Układ &klawiatury"), this);
   keyboardLayoutAction->setShortcut(tr("Ctrl+W"));
   connect(keyboardLayoutAction, SIGNAL(triggered()), this, SLOT(changeLayout()));
+  
   connect(searchLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(updateTreeWidget()));
 
   exitAction = new QAction(tr("&Zakończ"), this);
@@ -197,6 +213,8 @@ void WordMIXDialog::createActions()
   connect(exitAction, SIGNAL(triggered()), this, SLOT(close()));
 }
 
+//-------------------------------------------------------------------------------
+//! Creates menus.
 //-------------------------------------------------------------------------------
 void WordMIXDialog::createMenus()
 {
@@ -214,6 +232,8 @@ void WordMIXDialog::createMenus()
   resultsTreeWidget->addAction(deleteAction);
 }
 
+//-------------------------------------------------------------------------------
+//! Connects to database (if database doesn't exist, creates one).
 //-------------------------------------------------------------------------------
 void WordMIXDialog::connectToDatabase()
 {
@@ -234,9 +254,35 @@ void WordMIXDialog::connectToDatabase()
 }
 
 //-------------------------------------------------------------------------------
+//! Installs event filters.
+//-------------------------------------------------------------------------------
+void WordMIXDialog::installEventFilters()
+{
+  definitionTextBrowser->installEventFilter(
+    new DefBrowserEventFilter(searchLineEdit, resultsTreeWidget, this));
+  resultsTreeWidget->installEventFilter(
+    new ResultsWidgetEventFilter(searchLineEdit, this));
+  searchLineEdit->installEventFilter(
+    new SearchLineEventFilter(resultsTreeWidget, this));
+}
+
+//-------------------------------------------------------------------------------
+//! Gets number of results that matches text in searchLineEdit.
+//-------------------------------------------------------------------------------
 int WordMIXDialog::getOccurencesCount(const QString &s)
 {
   QSqlQuery query("SELECT COUNT(*) AS ilosc FROM wordbook WHERE word LIKE '" + s + "%'");
   query.next();
   return query.value(0).toInt();
+}
+
+//-------------------------------------------------------------------------------
+//! Delay in seconds.
+//-------------------------------------------------------------------------------
+void WordMIXDialog::delay(int sec)
+{
+  QTime dieTime = QTime::currentTime().addSecs(sec);
+  while(QTime::currentTime() < dieTime) {
+    QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+  }
 }
