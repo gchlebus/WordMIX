@@ -86,11 +86,34 @@ void LearnWordDialog::check()
 
 void LearnWordDialog::createLists()
 {
-  QSqlQuery query("SELECT word, definition FROM wordbook");
-  int counter = 0;
-  while (query.next() && counter++ < count) {
-    words.append(query.value(0).toString());
-    definitions.append(query.value(1).toString());
+  QSqlQuery query("SELECT COUNT(*) AS ilosc FROM wordbook");
+  query.next();
+  int num = query.value(0).toInt();
+  if (num < count) count = num;
+
+  QStringList wordsTmp, definitionsTmp;
+  query.exec("SELECT word, definition FROM wordbook");
+  while (query.next()) {
+    wordsTmp.append(query.value(0).toString());
+    definitionsTmp.append(query.value(1).toString());
   }
-  count = counter - 1;
+
+  int day = QDate::currentDate().day();
+  int month = QDate::currentDate().month();
+  srand(day * month);
+  
+  QVector<int> nums;
+  for (int i = 0; i < count; ++i) {
+    bool present;
+    do {
+      present = false;
+      num = (rand() % count) + 1;
+      for (int j = 0; j < nums.size(); ++j) {
+        if (num == nums[j]) present = true;
+      }
+    } while (present);
+    nums.append(num);
+    words.append(wordsTmp[num]);
+    definitions.append(definitionsTmp[num]);
+  }
 }
