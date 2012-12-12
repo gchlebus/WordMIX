@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Ucz się</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
@@ -127,17 +127,6 @@
     </layout>
    </item>
   </layout>
-  <zorder>wordDefinition</zorder>
-  <zorder>wordLabel</zorder>
-  <zorder>horizontalSpacer</zorder>
-  <zorder>horizontalSpacer_2</zorder>
-  <zorder>checkButton</zorder>
-  <zorder>nextButton</zorder>
-  <zorder>previousButton</zorder>
-  <zorder>horizontalSpacer_3</zorder>
-  <zorder>horizontalSpacer_4</zorder>
-  <zorder>horizontalSpacer_4</zorder>
-  <zorder>counterLabel</zorder>
  </widget>
  <tabstops>
   <tabstop>checkButton</tabstop>

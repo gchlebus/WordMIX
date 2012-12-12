@@ -17,7 +17,7 @@ public:
   ~LearnWordDialog();
 
 protected:
-  //bool eventFilter(QObject *object, QEvent *e);
+  bool eventFilter(QObject *object, QEvent *e);
 
 private slots:
   void next();

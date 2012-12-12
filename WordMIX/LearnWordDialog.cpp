@@ -3,6 +3,7 @@
 // Qt includes
 #include <QSqlQuery>
 #include <QDate>
+#include <QKeyEvent>
 
 LearnWordDialog::LearnWordDialog(int num, QWidget *parent /* = NULL */)
   : QDialog(parent)
@@ -18,6 +19,8 @@ LearnWordDialog::LearnWordDialog(int num, QWidget *parent /* = NULL */)
   wordLabel->setText(words[currentIdx-1]);
   wordDefinition->clear();
 
+  installEventFilter(this);
+
   connect(nextButton, SIGNAL(clicked()), this, SLOT(next()));
   connect(previousButton, SIGNAL(clicked()), this, SLOT(previous()));
   connect(checkButton, SIGNAL(clicked()), this, SLOT(check()));
@@ -26,6 +29,28 @@ LearnWordDialog::LearnWordDialog(int num, QWidget *parent /* = NULL */)
 LearnWordDialog::~LearnWordDialog()
 {
 
+}
+
+bool LearnWordDialog::eventFilter(QObject *object, QEvent *e)
+{
+  if (e->type() == QEvent::KeyPress) {
+    QKeyEvent *keyEvent = static_cast<QKeyEvent *>(e);
+    int key = keyEvent->key();
+
+    if (key == Qt::Key_Return) {
+      check();
+      return true;
+    }
+    else if (key == Qt::Key_D) {
+      next();
+      return true;
+    }
+    else if (key == Qt::Key_A) {
+      previous();
+      return true;
+    }
+  }
+  return false;
 }
 
 void LearnWordDialog::next()
