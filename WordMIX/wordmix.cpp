@@ -198,7 +198,7 @@ void WordMIXDialog::createActions()
   deleteAction = new QAction(tr("&Usuń"), this);
   connect(deleteAction, SIGNAL(triggered()), this, SLOT(deleteWord()));
 
-  learnAction = new QAction(tr("&Ucz"), this);
+  learnAction = new QAction(tr("&Ucz się"), this);
   learnAction->setShortcut(tr("Ctrl+L"));
   connect(learnAction, SIGNAL(triggered()), this, SLOT(learnWords()));
 

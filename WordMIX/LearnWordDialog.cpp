@@ -5,32 +5,34 @@
 #include <QDate>
 #include <QKeyEvent>
 
+//-------------------------------------------------------------------------------
+//! Constructor.
+//-------------------------------------------------------------------------------
 LearnWordDialog::LearnWordDialog(int num, QWidget *parent /* = NULL */)
   : QDialog(parent)
   , count(num)
-  , currentIdx(1)
+  , currentIdx(0)
 {
   setupUi(this);
 
   createLists();
-  char buf[50];
-  sprintf(buf, "%d/%d", currentIdx, count);
-  counterLabel->setText(buf);
-  wordLabel->setText(words[currentIdx-1]);
-  wordDefinition->clear();
-
+  createActions();
   installEventFilter(this);
-
-  connect(nextButton, SIGNAL(clicked()), this, SLOT(next()));
-  connect(previousButton, SIGNAL(clicked()), this, SLOT(previous()));
-  connect(checkButton, SIGNAL(clicked()), this, SLOT(check()));
+  // set up dialog for first word
+  next();  
 }
 
+//-------------------------------------------------------------------------------
+//! Destructor.
+//-------------------------------------------------------------------------------
 LearnWordDialog::~LearnWordDialog()
 {
 
 }
 
+//-------------------------------------------------------------------------------
+//! Event filter.
+//-------------------------------------------------------------------------------
 bool LearnWordDialog::eventFilter(QObject *object, QEvent *e)
 {
   if (e->type() == QEvent::KeyPress) {
@@ -53,6 +55,18 @@ bool LearnWordDialog::eventFilter(QObject *object, QEvent *e)
   return false;
 }
 
+//-------------------------------------------------------------------------------
+//! Creates actions.
+//-------------------------------------------------------------------------------
+void LearnWordDialog::createActions()
+{
+  connect(nextButton, SIGNAL(clicked()), this, SLOT(next()));
+  connect(previousButton, SIGNAL(clicked()), this, SLOT(previous()));
+  connect(checkButton, SIGNAL(clicked()), this, SLOT(check()));
+}
+//-------------------------------------------------------------------------------
+//! Goes to next word.
+//-------------------------------------------------------------------------------
 void LearnWordDialog::next()
 {
   // increment counter
@@ -66,6 +80,9 @@ void LearnWordDialog::next()
   wordDefinition->clear();
 }
 
+//-------------------------------------------------------------------------------
+//! Goes to previous word.
+//-------------------------------------------------------------------------------
 void LearnWordDialog::previous()
 {
   // decrement counter
@@ -79,11 +96,17 @@ void LearnWordDialog::previous()
   wordDefinition->clear();
 }
 
+//-------------------------------------------------------------------------------
+//! Displays definition for currently displayed word.
+//-------------------------------------------------------------------------------
 void LearnWordDialog::check()
 {
   wordDefinition->setHtml(definitions[currentIdx-1]);
 }
 
+//-------------------------------------------------------------------------------
+//! Creates lists with words and their definitions to be used during learning.
+//-------------------------------------------------------------------------------
 void LearnWordDialog::createLists()
 {
   QSqlQuery query("SELECT COUNT(*) AS ilosc FROM wordbook");
