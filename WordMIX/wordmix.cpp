@@ -24,6 +24,7 @@
 WordMIXDialog::WordMIXDialog(QWidget *parent, Qt::WFlags flags)
     : QMainWindow(parent, flags)
     , selectedItem(NULL)
+    , learnWordDialog(NULL)
 {
   setupUi(this);
   setupResultsTree();
@@ -124,8 +125,12 @@ void WordMIXDialog::deleteWord()
 //-------------------------------------------------------------------------------
 void WordMIXDialog::learnWords()
 {
-  LearnWordDialog dialog(20, this);
-  dialog.exec();
+  // TODO: add minimize button to LearnWordDialog
+  if (!learnWordDialog) {
+    learnWordDialog = new LearnWordDialog(20, this);
+  }
+  learnWordDialog->show();
+  learnWordDialog->activateWindow();
 }
 
 //-------------------------------------------------------------------------------

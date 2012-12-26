@@ -8,6 +8,7 @@
 
 // Forward declarations
 class QLabel;
+class LearnWordDialog;
 
 class WordMIXDialog 
   : public QMainWindow
@@ -62,6 +63,7 @@ private:
   QAction *exitAction;
   QLabel *statusLabel;
   QTreeWidgetItem *selectedItem;
+  LearnWordDialog *learnWordDialog;
 };
 
 #endif // __WordMIX_H
