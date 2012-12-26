@@ -5,5 +5,8 @@
         <file>add.png</file>
         <file>delete.png</file>
         <file>edit.png</file>
+        <file>exit.png</file>
+        <file>learn.png</file>
+        <file>keyboard.png</file>
     </qresource>
 </RCC>

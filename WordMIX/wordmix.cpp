@@ -210,17 +210,23 @@ void WordMIXDialog::createActions()
   connect(deleteAction, SIGNAL(triggered()), this, SLOT(deleteWord()));
 
   learnAction = new QAction(tr("&Ucz się"), this);
+  learnAction->setIcon(QIcon(":/WordMIX/learn.png"));
   learnAction->setShortcut(tr("Ctrl+L"));
+  learnAction->setStatusTip(tr("Przejdź do nauki słówek."));
   connect(learnAction, SIGNAL(triggered()), this, SLOT(learnWords()));
 
   keyboardLayoutAction = new QAction(tr("Układ &klawiatury"), this);
+  keyboardLayoutAction->setIcon(QIcon(":/WordMIX/keyboard.png"));
   keyboardLayoutAction->setShortcut(tr("Ctrl+W"));
+  keyboardLayoutAction->setStatusTip(tr("Zmień język wejściowy klawiatury."));
   connect(keyboardLayoutAction, SIGNAL(triggered()), this, SLOT(changeLayout()));
   
   connect(searchLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(updateTreeWidget()));
 
   exitAction = new QAction(tr("&Zakończ"), this);
+  exitAction->setIcon(QIcon(":/WordMIX/exit.png"));
   exitAction->setShortcut(tr("Ctrl+Q"));
+  exitAction->setStatusTip(tr("Wyjdź z programu."));
   connect(exitAction, SIGNAL(triggered()), this, SLOT(close()));
 }
 
