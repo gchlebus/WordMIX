@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>416</width>
-    <height>392</height>
+    <height>305</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -73,7 +73,13 @@
     </layout>
    </item>
    <item row="1" column="0">
-    <widget class="QTextBrowser" name="wordDefinition"/>
+    <widget class="QTextBrowser" name="wordDefinition">
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+    </widget>
    </item>
    <item row="2" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
