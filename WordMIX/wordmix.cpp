@@ -193,14 +193,20 @@ void WordMIXDialog::createActions()
 {
   // Create actions
   addAction = new QAction(tr("&Dodaj"), this);
+  addAction->setIcon(QIcon(":/WordMIX/add.png"));
   addAction->setShortcut(tr("Ctrl+D"));
+  addAction->setStatusTip(tr("Dodaj słowo do słownika."));
   connect(addAction, SIGNAL(triggered()), this, SLOT(addWord()));
 
   editAction = new QAction(tr("&Edytuj"), this);
+  editAction->setIcon(QIcon(":/WordMIX/edit.png"));
   editAction->setShortcut(tr("Ctrl+E"));
+  editAction->setStatusTip(tr("Edytuj zaznaczone słowo."));
   connect(editAction, SIGNAL(triggered()), this, SLOT(editWord()));
 
   deleteAction = new QAction(tr("&Usuń"), this);
+  deleteAction->setIcon(QIcon(":/WordMIX/delete.png"));
+  deleteAction->setStatusTip(tr("Usuń zaznaczone słowo."));
   connect(deleteAction, SIGNAL(triggered()), this, SLOT(deleteWord()));
 
   learnAction = new QAction(tr("&Ucz się"), this);
