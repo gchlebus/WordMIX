@@ -9,7 +9,7 @@
 //! Constructor.
 //-------------------------------------------------------------------------------
 LearnWordDialog::LearnWordDialog(int num, QWidget *parent /* = NULL */)
-  : QDialog(parent)
+  : QDialog(parent, Qt::WindowMinimizeButtonHint)
   , count(num)
   , currentIdx(0)
 {
