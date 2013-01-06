@@ -125,7 +125,6 @@ void WordMIXDialog::deleteWord()
 //-------------------------------------------------------------------------------
 void WordMIXDialog::learnWords()
 {
-  // TODO: add minimize button to LearnWordDialog
   if (!learnWordDialog) {
     learnWordDialog = new LearnWordDialog(20, this);
   }
