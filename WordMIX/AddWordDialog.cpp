@@ -3,6 +3,7 @@
 // Qt includes
 #include <QSqlQuery>
 #include <QMessageBox>
+#include<QFile>
 //win include
 #include <Windows.h>
 
@@ -21,8 +22,10 @@ AddWordDialog::AddWordDialog(int m, QWidget *parent /* = NULL */)
   connect(cancelButton, SIGNAL(clicked()), this, SLOT(reject()));
 
   if (mode == 0) {
-    defLineEdit->setPlainText("<b></b>\n<br><br>\n<b>ang.</b>\n<br><br>\n"
-      "<b></b>\n<br>\n<b></b>\n<br>\n<b></b>\n<br>\n<b></b>\n<br>\n");
+    QFile file("./template.txt");
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+      return;
+    defLineEdit->setPlainText(file.readAll());
   }
 }
 
