@@ -1,5 +1,7 @@
 // Local includes
 #include "LearnWordDialog.h"
+// Global includes
+#include <time.h>
 // Qt includes
 #include <QSqlQuery>
 #include <QDate>
@@ -121,10 +123,7 @@ void LearnWordDialog::createLists()
     definitionsTmp.append(query.value(1).toString());
   }
 
-  int day = QDate::currentDate().day();
-  int month = QDate::currentDate().month();
-  srand(day * month);
-  
+  srand(time(NULL));
   QVector<int> nums;
   for (int i = 0; i < count; ++i) {
     bool present;
