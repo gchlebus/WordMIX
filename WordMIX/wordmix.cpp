@@ -156,7 +156,7 @@ void WordMIXDialog::updateTreeWidget()
   // Clear tree widget and repopulate
   resultsTreeWidget->clear();
   QList<QTreeWidgetItem *> items;
-  QSqlQuery query("SELECT id, word FROM wordbook WHERE word LIKE '" + searchLineEdit->text() + "%' ORDER BY word");
+  QSqlQuery query("SELECT id, word FROM wordbook WHERE word LIKE '" + searchLineEdit->text() + "%' ORDER BY word COLLATE NOCASE");
   while (query.next()) {
     QStringList entry;
     entry << query.value(0).toString() << query.value(1).toString();
