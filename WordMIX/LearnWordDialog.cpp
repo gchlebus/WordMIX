@@ -113,8 +113,8 @@ void LearnWordDialog::createLists()
 {
   QSqlQuery query("SELECT COUNT(*) AS ilosc FROM wordbook");
   query.next();
-  int num = query.value(0).toInt();
-  if (num < count) count = num;
+  int wordsCount = query.value(0).toInt();
+  if (wordsCount < count) count = wordsCount;
 
   QStringList wordsTmp, definitionsTmp;
   query.exec("SELECT word, definition FROM wordbook");
@@ -124,12 +124,13 @@ void LearnWordDialog::createLists()
   }
 
   srand(time(NULL));
+  int num;
   QVector<int> nums;
   for (int i = 0; i < count; ++i) {
     bool present;
     do {
       present = false;
-      num = (rand() % count) + 1;
+      num = (rand() % wordsCount) + 1;
       for (int j = 0; j < nums.size(); ++j) {
         if (num == nums[j]) present = true;
       }
