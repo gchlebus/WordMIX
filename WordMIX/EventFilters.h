@@ -40,14 +40,15 @@ protected:
         key == Qt::Key_Backspace) {
           QApplication::sendEvent(_lineEdit, e);
           _lineEdit->setFocus();
+		  return true;
       }
 
       // if key down or key up then set focus to results tree
       if (key == Qt::Key_Up || key == Qt::Key_Down) {
         _treeWidget->setFocus();
+		return true;
       }
-
-      return true;
+      
     }
     return false;
   }
