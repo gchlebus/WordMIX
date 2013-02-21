@@ -123,7 +123,10 @@ void LearnWordDialog::createLists()
     definitionsTmp.append(query.value(1).toString());
   }
 
-  srand(time(NULL));
+  int day = QDate::currentDate().day()-1;
+  int month = QDate::currentDate().month();
+  srand(day * month);
+
   int num;
   QVector<int> nums;
   for (int i = 0; i < count; ++i) {
