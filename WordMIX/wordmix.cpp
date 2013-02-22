@@ -62,6 +62,18 @@ void WordMIXDialog::on_resultsTreeWidget_itemSelectionChanged()
 }
 
 //-------------------------------------------------------------------------------
+//! Definition text browser selection.
+//-------------------------------------------------------------------------------
+void WordMIXDialog::on_definitionTextBrowser_selectionChanged()
+{
+	QString text = definitionTextBrowser->textCursor().selectedText();
+	if (text.length() > 0 &&
+		text.split(' ').count() == 1 && text.split('\n').count() == 1) {
+			searchLineEdit->setText(text);
+	}
+}
+
+//-------------------------------------------------------------------------------
 //! Add word action slot.
 //-------------------------------------------------------------------------------
 void WordMIXDialog::addWord()

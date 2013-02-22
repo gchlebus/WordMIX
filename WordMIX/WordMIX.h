@@ -26,6 +26,8 @@ public:
 private slots:
   //! Tree widget selection changed slot.
   void on_resultsTreeWidget_itemSelectionChanged();
+  //! Definition text browser selection.
+  void on_definitionTextBrowser_selectionChanged();
   //! Add word action slot.
   void addWord();
   //! Edit word action slot.
