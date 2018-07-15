@@ -5,8 +5,13 @@
   <img src ="Logo.png" />
 </p>
 
+## Main window
 
 ![MainWindow](MainWindow.png)
+
+## Learn mode
+
+![LearnMode](LearnMode.gif)
 
 # Installation
 
