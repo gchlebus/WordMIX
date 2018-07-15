@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Ucz się</string>
+   <string>Learn mode</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
@@ -86,7 +86,7 @@
      <item>
       <widget class="QPushButton" name="previousButton">
        <property name="text">
-        <string>Poprzedni</string>
+        <string>Previous</string>
        </property>
       </widget>
      </item>
@@ -106,7 +106,7 @@
      <item>
       <widget class="QPushButton" name="checkButton">
        <property name="text">
-        <string>Sprawdź</string>
+        <string>Check</string>
        </property>
       </widget>
      </item>
@@ -126,7 +126,7 @@
      <item>
       <widget class="QPushButton" name="nextButton">
        <property name="text">
-        <string>Następny</string>
+        <string>Next</string>
        </property>
       </widget>
      </item>

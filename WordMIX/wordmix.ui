@@ -30,7 +30,7 @@
           <item>
            <widget class="QLabel" name="label">
             <property name="text">
-             <string>&amp;Szukaj</string>
+             <string>&amp;Search</string>
             </property>
             <property name="buddy">
              <cstring>searchLineEdit</cstring>
@@ -55,7 +55,7 @@
           <item>
            <widget class="QLabel" name="resultsCountLabel">
             <property name="text">
-             <string>Wyniki: 0</string>
+             <string>Results: 0</string>
             </property>
            </widget>
           </item>

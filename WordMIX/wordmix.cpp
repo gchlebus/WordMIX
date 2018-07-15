@@ -194,35 +194,35 @@ void WordMIXDialog::setupResultsTree()
 void WordMIXDialog::createActions()
 {
   // Create actions
-  addAction = new QAction(tr("&Dodaj"), this);
+  addAction = new QAction(tr("&Add"), this);
   addAction->setIcon(QIcon(":/WordMIX/add.png"));
-  addAction->setShortcut(tr("Ctrl+D"));
-  addAction->setStatusTip(tr("Dodaj słowo do słownika."));
+  addAction->setShortcut(tr("Ctrl+A"));
+  addAction->setStatusTip(tr("Add new word."));
   connect(addAction, SIGNAL(triggered()), this, SLOT(addWord()));
 
-  editAction = new QAction(tr("&Edytuj"), this);
+  editAction = new QAction(tr("&Edit"), this);
   editAction->setIcon(QIcon(":/WordMIX/edit.png"));
   editAction->setShortcut(tr("Ctrl+E"));
-  editAction->setStatusTip(tr("Edytuj zaznaczone słowo."));
+  editAction->setStatusTip(tr("Edit word."));
   connect(editAction, SIGNAL(triggered()), this, SLOT(editWord()));
 
-  deleteAction = new QAction(tr("&Usuń"), this);
+  deleteAction = new QAction(tr("&Delete"), this);
   deleteAction->setIcon(QIcon(":/WordMIX/delete.png"));
-  deleteAction->setStatusTip(tr("Usuń zaznaczone słowo."));
+  deleteAction->setStatusTip(tr("Delte word."));
   connect(deleteAction, SIGNAL(triggered()), this, SLOT(deleteWord()));
 
-  learnAction = new QAction(tr("&Ucz się"), this);
+  learnAction = new QAction(tr("&Learn mode"), this);
   learnAction->setIcon(QIcon(":/WordMIX/learn.png"));
   learnAction->setShortcut(tr("Ctrl+L"));
-  learnAction->setStatusTip(tr("Przejdź do nauki słówek."));
+  learnAction->setStatusTip(tr("Toggle learn mode."));
   connect(learnAction, SIGNAL(triggered()), this, SLOT(learnWords()));
 
   connect(searchLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(updateTreeWidget()));
 
-  exitAction = new QAction(tr("&Zakończ"), this);
+  exitAction = new QAction(tr("&Quit"), this);
   exitAction->setIcon(QIcon(":/WordMIX/exit.png"));
   exitAction->setShortcut(tr("Ctrl+Q"));
-  exitAction->setStatusTip(tr("Wyjdź z programu."));
+  exitAction->setStatusTip(tr("Quit."));
   connect(exitAction, SIGNAL(triggered()), this, SLOT(close()));
 }
 

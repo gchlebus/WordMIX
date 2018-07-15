@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dodaj/Edytuj Słowo</string>
+   <string>Add/Edit Word</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
@@ -25,7 +25,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Słowo</string>
+        <string>Word</string>
        </property>
       </widget>
      </item>
@@ -50,7 +50,7 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>Definicja</string>
+      <string>Definition</string>
      </property>
     </widget>
    </item>
@@ -89,7 +89,7 @@
      <item>
       <widget class="QPushButton" name="cancelButton">
        <property name="text">
-        <string>Anuluj</string>
+        <string>Cancel</string>
        </property>
       </widget>
      </item>
