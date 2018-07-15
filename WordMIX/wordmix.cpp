@@ -148,8 +148,8 @@ void WordMIXDialog::learnWords()
 //-------------------------------------------------------------------------------
 void WordMIXDialog::updateTreeWidget()
 {
-  char buf[10];
-  sprintf(buf, "Wyniki: %d", getOccurencesCount(searchLineEdit->text()));
+  char buf[20];
+  sprintf(buf, "Results: %d", getOccurencesCount(searchLineEdit->text()));
   resultsCountLabel->setText(buf);
 
   // Store ID of previously selected item, so the selection is preserved if possible
