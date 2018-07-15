@@ -3,19 +3,42 @@
 # ------------------------------------------------------
 
 TEMPLATE = app
+
 TARGET = WordMIX
-DESTDIR = ../Win32/Release
-QT += core gui sql
+
+QT += core gui sql widgets
+
 CONFIG += release
-DEFINES += QT_LARGEFILE_SUPPORT QT_DLL QT_SQL_LIB
+
+DEFINES += QT_DLL QT_SQL_LIB
+
 INCLUDEPATH += ./GeneratedFiles \
-    . \
-    ./GeneratedFiles/Release
-PRECOMPILED_HEADER = StdAfx.h
+               . \
+               
+HEADERS = AddWordDialog.h \
+          EventFilters.h \
+          LearnWordDialog.h \
+          wordmix.h
+
+SOURCES = AddWordDialog.cpp \
+          LearnWordDialog.cpp \
+          main.cpp \
+          wordmix.cpp
+
+FORMS = AddWord.ui \
+        LearnWord.ui \
+        wordmix.ui
+
 DEPENDPATH += .
-MOC_DIR += ./GeneratedFiles/release
+
+MOC_DIR += ./GeneratedFiles
+
 OBJECTS_DIR += release
+
 UI_DIR += ./GeneratedFiles
+
 RCC_DIR += ./GeneratedFiles
-include(WordMIX.pri)
+
+#include(WordMIX.pri)
+
 win32:RC_FILE = WordMIX.rc

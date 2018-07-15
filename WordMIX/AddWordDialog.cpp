@@ -4,8 +4,6 @@
 #include <QSqlQuery>
 #include <QMessageBox>
 #include<QFile>
-//win include
-#include <Windows.h>
 
 AddWordDialog::AddWordDialog(int m, QWidget *parent /* = NULL */)
   : QDialog(parent)
@@ -13,10 +11,11 @@ AddWordDialog::AddWordDialog(int m, QWidget *parent /* = NULL */)
 {
   setupUi(this);
 
-  keyboardLayoutAction = new QAction("ChangeLayout", this);
+  /*keyboardLayoutAction = new QAction("ChangeLayout", this);
   keyboardLayoutAction->setShortcut(tr("Ctrl+W"));
   connect(keyboardLayoutAction, SIGNAL(triggered()), this, SLOT(changeLayout()));
   addAction(keyboardLayoutAction);
+  */
 
   connect(okButton, SIGNAL(clicked()), this, SLOT(accept()));
   connect(cancelButton, SIGNAL(clicked()), this, SLOT(reject()));
@@ -63,5 +62,5 @@ void AddWordDialog::accept()
 
 void AddWordDialog::changeLayout()
 {
-  ActivateKeyboardLayout((HKL)HKL_NEXT, KLF_SETFORPROCESS);
+  //  ActivateKeyboardLayout((HKL)HKL_NEXT, KLF_SETFORPROCESS);
 }

@@ -7,3 +7,9 @@
 *.user
 *.filters
 *.vcxproj
+
+Makefile
+*#*
+.#*
+.qmake.stash
+WordMix.app

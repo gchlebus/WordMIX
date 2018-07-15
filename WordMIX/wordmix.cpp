@@ -15,13 +15,11 @@
 #include <QFile>
 #include <QTextCodec>
 #include <QTime>
-// WinAPI include
-#include <Windows.h>
 
 //-------------------------------------------------------------------------------
 //! Constructor.
 //------------------------------------------------------------------------------- 
-WordMIXDialog::WordMIXDialog(QWidget *parent, Qt::WFlags flags)
+WordMIXDialog::WordMIXDialog(QWidget *parent, QFlag flags)
     : QMainWindow(parent, flags)
     , selectedItem(NULL)
     , learnWordDialog(NULL)
@@ -149,7 +147,7 @@ void WordMIXDialog::learnWords()
 //-------------------------------------------------------------------------------
 void WordMIXDialog::changeLayout()
 {
-  ActivateKeyboardLayout((HKL)HKL_NEXT, KLF_SETFORPROCESS);
+  //  ActivateKeyboardLayout((HKL)HKL_NEXT, KLF_SETFORPROCESS);
 }
 
 //-------------------------------------------------------------------------------
@@ -226,11 +224,13 @@ void WordMIXDialog::createActions()
   learnAction->setStatusTip(tr("Przejdź do nauki słówek."));
   connect(learnAction, SIGNAL(triggered()), this, SLOT(learnWords()));
 
+  /*
   keyboardLayoutAction = new QAction(tr("Układ &klawiatury"), this);
   keyboardLayoutAction->setIcon(QIcon(":/WordMIX/keyboard.png"));
   keyboardLayoutAction->setShortcut(tr("Ctrl+W"));
   keyboardLayoutAction->setStatusTip(tr("Zmień język wejściowy klawiatury."));
   connect(keyboardLayoutAction, SIGNAL(triggered()), this, SLOT(changeLayout()));
+  */
   
   connect(searchLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(updateTreeWidget()));
 

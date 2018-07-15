@@ -4,7 +4,7 @@
 // UI include
 #include "ui_wordmix.h"
 //Qt includes
-#include <QtGui/QMainWindow>
+#include <QtWidgets/QMainWindow>
 
 // Forward declarations
 class QLabel;
@@ -19,7 +19,7 @@ class WordMIXDialog
 public:
 
   //! Constructor.
-  WordMIXDialog(QWidget *parent = 0, Qt::WFlags flags = 0);
+  WordMIXDialog(QWidget *parent = 0, QFlag flags = 0);
   //! Destructor.
   ~WordMIXDialog();
 
