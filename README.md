@@ -1,7 +1,10 @@
 # WordMIX - Learn new words by making your own dictionary
 [![Build Status](https://travis-ci.com/gchlebus/WordMIX.svg?branch=master)](https://travis-ci.com/gchlebus/WordMIX)
 
-<div style="text-align:center"><img src ="Logo.png" /></div>
+<p align="center">
+  <img src ="Logo.png" />
+</p>
+
 
 ![MainWindow](MainWindow.png)
 
