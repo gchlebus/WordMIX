@@ -1,7 +1,7 @@
 # WordMIX
 [![Build Status](https://travis-ci.com/gchlebus/WordMIX.svg?branch=master)](https://travis-ci.com/gchlebus/WordMIX)
 
-![Logo](Logo.png=200px)
+![Logo](Logo.png)
 Learn new words by making your own dictionary.
 ![MainWindow](MainWindow.png)
 
