@@ -17,11 +17,7 @@ public:
   ~AddWordDialog();
   void accept();
 
-private slots:
-  void changeLayout();
-
 private:
-  QAction *keyboardLayoutAction;
   int mode; // 0 - add word
             // 1 - edit word
 };

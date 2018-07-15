@@ -36,8 +36,6 @@ private slots:
   void deleteWord();
   //! Learn words action slot.
   void learnWords();
-  //! Change keyboard layout action slot.
-  void changeLayout();
   //! Updates results tree.
   void updateTreeWidget();
 

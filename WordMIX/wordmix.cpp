@@ -143,14 +143,6 @@ void WordMIXDialog::learnWords()
 }
 
 //-------------------------------------------------------------------------------
-//! Change keyboard layout action slot.
-//-------------------------------------------------------------------------------
-void WordMIXDialog::changeLayout()
-{
-  //  ActivateKeyboardLayout((HKL)HKL_NEXT, KLF_SETFORPROCESS);
-}
-
-//-------------------------------------------------------------------------------
 //! Updates results tree.
 //-------------------------------------------------------------------------------
 void WordMIXDialog::updateTreeWidget()
@@ -224,14 +216,6 @@ void WordMIXDialog::createActions()
   learnAction->setStatusTip(tr("Przejdź do nauki słówek."));
   connect(learnAction, SIGNAL(triggered()), this, SLOT(learnWords()));
 
-  /*
-  keyboardLayoutAction = new QAction(tr("Układ &klawiatury"), this);
-  keyboardLayoutAction->setIcon(QIcon(":/WordMIX/keyboard.png"));
-  keyboardLayoutAction->setShortcut(tr("Ctrl+W"));
-  keyboardLayoutAction->setStatusTip(tr("Zmień język wejściowy klawiatury."));
-  connect(keyboardLayoutAction, SIGNAL(triggered()), this, SLOT(changeLayout()));
-  */
-  
   connect(searchLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(updateTreeWidget()));
 
   exitAction = new QAction(tr("&Zakończ"), this);
