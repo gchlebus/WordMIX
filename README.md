@@ -1,9 +1,14 @@
-# WordMIX - Learn new words by making your own dictionary
+# WordMIX - Train foreign language vocabulary by creating your own dictionary
 [![Build Status](https://travis-ci.com/gchlebus/WordMIX.svg?branch=master)](https://travis-ci.com/gchlebus/WordMIX)
 
 <p align="center">
   <img src ="Logo.png" />
 </p>
+
+## How it works
+
+- Add words and their definitions to the dictionary.
+- Memorize them using the **Learn mode**.
 
 ## Main window
 
