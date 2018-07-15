@@ -11,7 +11,9 @@
 
 ## Learn mode
 
-![LearnMode](LearnMode.gif)
+<p align="center">
+  <img src ="LearnMode.gif" />
+</p>
 
 # Installation
 
