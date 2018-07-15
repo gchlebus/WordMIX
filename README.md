@@ -15,6 +15,8 @@
 
 # Installation
 
+## macOS
+
 ```
 # Tested with Qt 5.11.1
 brew install qt
