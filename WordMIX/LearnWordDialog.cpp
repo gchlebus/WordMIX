@@ -133,7 +133,7 @@ void LearnWordDialog::createLists()
     bool present;
     do {
       present = false;
-      num = (rand() % wordsCount) + 1;
+      num = (rand() % wordsCount);// + 1;
       for (int j = 0; j < nums.size(); ++j) {
         if (num == nums[j]) present = true;
       }
