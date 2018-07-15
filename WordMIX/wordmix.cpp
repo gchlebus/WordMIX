@@ -15,6 +15,7 @@
 #include <QFile>
 #include <QTextCodec>
 #include <QTime>
+#include <QStandardPaths>
 
 //-------------------------------------------------------------------------------
 //! Constructor.
@@ -251,12 +252,12 @@ void WordMIXDialog::connectToDatabase()
 {
   QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
   
-  QDir dir("./db");
+  QDir dir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
   if (!dir.exists()) dir.mkpath(".");
-  db.setDatabaseName("./db/dictionary.db");
+  db.setDatabaseName(dir.filePath("dictionary.db"));
   
   if (!db.open()) {
-    QMessageBox::warning(this, "Błąd", db.lastError().text());
+    QMessageBox::warning(this, "Error", db.lastError().text());
     return;
   }
 
