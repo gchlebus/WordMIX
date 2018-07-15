@@ -41,4 +41,6 @@ RCC_DIR += ./GeneratedFiles
 
 #include(WordMIX.pri)
 
+ICON = WordMIX.icns
+
 win32:RC_FILE = WordMIX.rc
