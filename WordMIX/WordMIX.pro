@@ -29,6 +29,8 @@ FORMS = AddWord.ui \
         LearnWord.ui \
         wordmix.ui
 
+RESOURCES += wordmix.qrc
+
 DEPENDPATH += .
 
 MOC_DIR += ./GeneratedFiles
@@ -39,11 +41,10 @@ UI_DIR += ./GeneratedFiles
 
 RCC_DIR += ./GeneratedFiles
 
-#include(WordMIX.pri)
-
 ICON = WordMIX.icns
 
 win32:RC_FILE = WordMIX.rc
 
 target.path = ~/Applications/
 INSTALLS += target
+
