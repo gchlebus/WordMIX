@@ -44,3 +44,6 @@ RCC_DIR += ./GeneratedFiles
 ICON = WordMIX.icns
 
 win32:RC_FILE = WordMIX.rc
+
+target.path = ~/Applications/
+INSTALLS += target
