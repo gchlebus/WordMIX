@@ -1,5 +1,6 @@
 # WordMIX - Train foreign language vocabulary by creating your own dictionary
 [![Build Status](https://travis-ci.com/gchlebus/WordMIX.svg?branch=master)](https://travis-ci.com/gchlebus/WordMIX)
+[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
 <p align="center">
   <img src ="Logo.png" />
