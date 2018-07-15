@@ -128,12 +128,12 @@
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>&amp;Plik</string>
+     <string>&amp;File</string>
     </property>
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
-     <string>&amp;Edycja</string>
+     <string>&amp;Edit</string>
     </property>
    </widget>
    <addaction name="menuFile"/>
