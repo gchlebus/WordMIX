@@ -1,11 +1,14 @@
 #include "wordmix.h"
 #include <QtWidgets/QApplication>
-#include <QTextCodec>
 #include <QSplashScreen>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
+    QCoreApplication::setApplicationName("WordMIX");
+    QCoreApplication::setOrganizationName("gchlebus");
+
     // Splash screen
     QPixmap pixmap(":/WordMIX/WordMIXSplash.png");
     QSplashScreen splash(pixmap);
